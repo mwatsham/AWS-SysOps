@@ -50,6 +50,14 @@ Spreads instances across many different partitions which rely on different sets 
   * *Kafka* - Apache Kafka is a community distributed event streaming platform capable of handling trillions of events a day. Kafka is primarily used to build real-time streaming data pipelines and applications that adapt to the data streams.
 
 ### Creating a Placement Group
-Via the Console UI - EC2=>Network & Security=>Placement Groups
+#### Console UI
+EC2 Network & Security Placement Groups
+
+#### CloudFormation 
+
+`PlacementGroup:
+  Type: AWS::EC2::PlacementGroup
+    Properties:
+      Strategy: cluster`
 
 # CloudWatch + EC2
