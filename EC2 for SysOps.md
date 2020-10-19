@@ -14,7 +14,8 @@ Changing the Instance type of an existing instance
 ## Placement Groups
 Controlling the placement strategy of an EC2 instance
 * Placement groups have 3 strategies
-  1. **Cluster** - cluster instances into low -latency group in a single Availability Zone
+### Cluster
+Cluster instances into low -latency group in a single Availability Zone
 * EC2 instances are on the same hardware in the same rack
 * Pros
   * Great network performance
@@ -23,7 +24,8 @@ Controlling the placement strategy of an EC2 instance
 * Use case
   * Big data job that need fast completion
   * Application that needs extremely low latency and high network throughput
-1. **Spread** - **spreads instances across underlying hardware** (max 7 instances per group per AZ) - critical applications
+### Spread
+**Spreads instances across underlying hardware** (max 7 instances per group per AZ) - critical applications
 * EC2 Instances are hosted on different hardware
 * Pros
   * **Can span across Availability Zones**
@@ -33,7 +35,8 @@ Controlling the placement strategy of an EC2 instance
 * Use Case
   * Application that requires **maximum high availability**
   * **Critical applications** where each instance must be isolated from failure from each other
-1. **Partition** - spreads instances across many different partitions which rely on different sets of racks of hardware within an AZ. Scales to 100s of EC2 instances per group - Hadoop, Cassandra, Kafka)
+### Partition
+Spreads instances across many different partitions which rely on different sets of racks of hardware within an AZ. Scales to 100s of EC2 instances per group - Hadoop, Cassandra, Kafka)
 * Partitions are separate racks
 * Up to 7 partitions per AZ
 * 100s of EC2 instances
