@@ -51,13 +51,25 @@ Spreads instances across many different partitions which rely on different sets 
 
 ### Creating a Placement Group
 #### Console UI
-EC2 Network & Security Placement Groups
+`EC2 => Network & Security => Placement Groups`
 
 #### CloudFormation 
-
-`PlacementGroup:
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html
+```
+PlacementGroup:
   Type: AWS::EC2::PlacementGroup
     Properties:
-      Strategy: cluster`
+      Strategy: cluster
+
+PlacementGroup:
+  Type: AWS::EC2::PlacementGroup
+    Properties:
+      Strategy: spread
+      
+PlacementGroup:
+  Type: AWS::EC2::PlacementGroup
+    Properties:
+      Strategy: partition
+```
 
 # CloudWatch + EC2
