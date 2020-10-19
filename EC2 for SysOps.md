@@ -53,8 +53,20 @@ Spreads instances across many different partitions which rely on different sets 
 #### Console UI
 `EC2 => Network & Security => Placement Groups`
 
+#### AWS CLI
+https://docs.aws.amazon.com/cli/latest/reference/ec2/create-placement-group.html
+```
+aws ec2 create-placement-group --group-name high-performance-group --strategy cluster
+
+aws ec2 create-placement-group --group-name critical-app-group --strategy spread
+
+aws ec2 create-placement-group --group-name distributed-app-group --strategy partition
+```
+
 #### CloudFormation 
 https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-placementgroup.html
+https://github.com/awsdocs/aws-cloudformation-user-guide/blob/main/doc_source/aws-resource-ec2-placementgroup.md
+
 ```
 PlacementGroup:
   Type: AWS::EC2::PlacementGroup
@@ -72,4 +84,24 @@ PlacementGroup:
       Strategy: partition
 ```
 
-# CloudWatch + EC2
+### Using Placement Groups
+EC2 instances can be assigned to an exisiting placement group at the point of creation
+
+## EC2 Shutdown Behaviour & Termination
+### Shutdown behaviour
+Influencing shutdown behaviour of an instance when the instance is shutdown via the OS i.e. `# shutdown now`
+Stopped is the Default behaviour
+An instance can be set to Terminate instead
+#### Stopped vs Terminated
+***Stopped***
+* When you an EC2 instance, the instance will be shutdown and the virtual machine that was provisioned for you will be permanently taken away and you will no longer be charged for instance usage.
+* The key difference between stopping and terminating an instance is that the **attached bootable EBS volume will not be deleted**.
+* The ability to stop an instance is only supported on instances that were launched using an EBS-based AMI where the root device data is stored on an attached EBS volume as an EBS boot partition instead of being stored on the local instance itself. 
+***Terminated***
+* When you terminate an EC2 instance, the instance will be shutdown and the virtual machine that was provisioned for you will be permanently taken away and you will no longer be charged for instance usage. 
+* **Any data that was stored locally on the instance will be lost.** 
+* **Any attached EBS volumes will be detached and deleted.** However, if you attach an EBS Snapshot to an instance at boot time, the default option in the Dashboard is to delete the attached EBS volume upon termination.
+
+### Termination protection
+Enabing termination protection on an EC2 instance to prevent accidental termination via the AWS Console.
+
