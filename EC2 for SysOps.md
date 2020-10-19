@@ -97,6 +97,7 @@ An instance can be set to Terminate instead
 * When you an EC2 instance, the instance will be shutdown and the virtual machine that was provisioned for you will be permanently taken away and you will no longer be charged for instance usage.
 * The key difference between stopping and terminating an instance is that the **attached bootable EBS volume will not be deleted**.
 * The ability to stop an instance is only supported on instances that were launched using an EBS-based AMI where the root device data is stored on an attached EBS volume as an EBS boot partition instead of being stored on the local instance itself. 
+
 ***Terminated***
 * When you terminate an EC2 instance, the instance will be shutdown and the virtual machine that was provisioned for you will be permanently taken away and you will no longer be charged for instance usage. 
 * **Any data that was stored locally on the instance will be lost.** 
