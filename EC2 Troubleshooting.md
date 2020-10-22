@@ -1,7 +1,7 @@
 # EC2 Instance Launch Issues
 ## #InstanceLimitExceeded 
 *Cause*: 
-* Means the the limit has been reached for the max number of instances in that region
+* Limit has been reached for the max number of instances in that region
 * Default limit for instances in a region is 20
 
 *Checks*:
